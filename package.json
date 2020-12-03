@@ -1,6 +1,6 @@
 {
   "name": "@bankroll/react-native-seon",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React Native Bridge for the Seon Device Fingerprint tool",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
