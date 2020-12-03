@@ -1,6 +1,18 @@
-import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import Seon from 'react-native-seon';
+import * as React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Seon from "react-native-seon";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 10,
+  },
+});
+
 
 export default function App() {
   const [fingerprint, setFingerprint] = React.useState<string>("");
@@ -8,8 +20,8 @@ export default function App() {
   const init = async () => {
     await Seon.init();
     await Seon.sessionId("abc123");
-    const fingerprint = await Seon.fingerprint();
-    setFingerprint(fingerprint);
+    const newFingerprint = await Seon.fingerprint();
+    setFingerprint(newFingerprint);
   };
 
   React.useEffect(() => {
@@ -22,14 +34,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 10,
-  },
-});

@@ -11,4 +11,5 @@ module.exports = {
   semi: true,
   arrowParens: "always",
   jsxSingleQuote: false,
+  quoteProps: "consistent",
 };
