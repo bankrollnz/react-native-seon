@@ -1,7 +1,7 @@
 {
   "name": "react-native-seon",
   "version": "0.1.0",
-  "description": "React Native Bridge for the Seon Fruad Fringerprint SDK",
+  "description": "React Native Bridge for the Seon Device Fingerprint tool",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/src/index.d.ts",

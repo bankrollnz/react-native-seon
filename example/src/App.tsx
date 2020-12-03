@@ -3,15 +3,22 @@ import { StyleSheet, View, Text } from 'react-native';
 import Seon from 'react-native-seon';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [fingerprint, setFingerprint] = React.useState<string>("");
+
+  const init = async () => {
+    await Seon.init();
+    await Seon.sessionId("abc123");
+    const fingerprint = await Seon.fingerprint();
+    setFingerprint(fingerprint);
+  };
 
   React.useEffect(() => {
-    Seon.multiply(3, 7).then(setResult);
+    init();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text style={styles.text}>Result: {fingerprint}</Text>
     </View>
   );
 }
@@ -21,5 +28,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  text: {
+    fontSize: 10,
   },
 });

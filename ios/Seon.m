@@ -1,19 +1,37 @@
 #import "Seon.h"
+#import <SeonSDK/SeonFingerprint.h>
 
 @implementation Seon
 
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://facebook.github.io/react-native/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+- (dispatch_queue_t)methodQueue
 {
-  NSNumber *result = @([a floatValue] * [b floatValue]);
+  return dispatch_get_main_queue();
+}
 
-  resolve(result);
+RCT_REMAP_METHOD(init, initWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [SeonFingerprint sharedManager];
+    resolve(@YES);
+}
+
+RCT_REMAP_METHOD(sessionId, sessionId:(NSString*)sessionId sessionIdResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[SeonFingerprint sharedManager] setSessionId:sessionId];
+    resolve(@YES);
+}
+
+RCT_REMAP_METHOD(logging, enabled:(BOOL*)enabled loggingResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    [[SeonFingerprint sharedManager] setLoggingEnabled:enabled];
+    resolve(@YES);
+}
+
+RCT_REMAP_METHOD(fingerprint, fingerprintResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    NSString *fingerprint = [[SeonFingerprint sharedManager] fingerprintBase64];
+    resolve(fingerprint);
 }
 
 @end

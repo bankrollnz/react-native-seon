@@ -1,7 +1,10 @@
 import { NativeModules } from 'react-native';
 
 type SeonType = {
-  multiply(a: number, b: number): Promise<number>;
+  init(): Promise<boolean>;
+  sessionId(sessionId: string): Promise<boolean>;
+  logging(enabled: boolean): Promise<boolean>;
+  fingerprint(): Promise<string>;
 };
 
 const { Seon } = NativeModules;
