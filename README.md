@@ -1,4 +1,4 @@
-# react-native-seon
+# @bankroll/react-native-seon
 
 React Native Bridge for the Seon Device Fingerprint tool
 
