@@ -2,7 +2,7 @@
 
 React Native Bridge for the Seon Device Fingerprint tool
 
-### This library is no longer maintained. Any new functionality or upgrades to be compatability with the latest React Native versions will need to manually done.
+### This library is no longer maintained. Any new functionality or upgrades to be compatible with the latest React Native versions will need to manually done.
 
 ## Installation
 
